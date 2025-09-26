@@ -1,0 +1,17 @@
+#id {
+color: brown;
+text-align: center;
+font-size: large;
+font-family: monospace;
+}
+
+.class {
+    color: blue;
+    text-align: center;
+    font-size: larger;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: aqua;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
