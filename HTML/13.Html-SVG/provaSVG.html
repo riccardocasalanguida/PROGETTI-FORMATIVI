@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <svg style="margin-top: 1%; margin-left: 1%;" width="300" height="300">
+            <circle cx="100" cy="100" r="90" stroke="green" stroke-width="10" fill="yellow" />
+        </svg><br><br>
+    </main>
+
+    <svg width="100" height="100">
+        <rect width="50" height="50" style="fill:rgb(0,0,255); rx: 20; ry:20;  
+        stroke:rgb(190, 20, 20)" rx=30 ry=30/>
+    </svg><br><br>
+
+
+
+
+    <svg height="150" width="500">
+        <defs>
+            <linearGradient id="grad1">
+                <stop offset="0%" stop-color="yellow" />
+                <stop offset="100%" stop-color="red" />
+            </linearGradient>
+        </defs>
+        <ellipse cx="100" cy="70" rx="85" ry="55" fill="url(#grad1)" />
+        <text fill="#ffffff" font-size="45" font-family="Verdana" x="50" y="86">SVG</text>
+    </svg>
+
+</body>
+
+</html>
