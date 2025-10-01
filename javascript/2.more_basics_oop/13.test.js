@@ -651,6 +651,108 @@ console.log(banca.getTotalAccount());
 */
 
 /*
+//EREDITARIETA'
+class SonAccount {
+  balance = 0
+  firstDeposit = 0
+  firstDraw = 0
+  secondDeposit = 0
+  secondDraw = 0
+
+  constructor(balance,firstDeposit,firstDraw,secondDeposit,secondDraw) {
+    this.balance = balance;
+    this.firstDeposit = firstDeposit;
+    this.firstDraw = firstDraw;
+    this.secondDeposit = secondDeposit;
+    this.secondDraw = secondDraw;
+  } 
+  getFirstDeposit() {
+    return this.balance + this.firstDeposit;
+  }
+  getFirstDraw() {
+    return this.getFirstDeposit() - this.firstDraw;
+  }
+  getSecondDeposit() {
+    return this.getFirstDraw() + this.secondDeposit;
+  }
+  getTotalAccount() {
+    return this.getSecondDeposit() - this.secondDraw;
+  }
+}
+let account = new SonAccount(0,500,200,100,50);
+console.log(account.getTotalAccount());
+
+
+
+
+
+class MotherAccount extends SonAccount {
+  canoneAnnuo = 0
+  
+  constructor(balance,firstDeposit,firstDraw,secondDeposit,secondDraw,canoneAnnuo) {
+    
+    super(balance,firstDeposit,firstDraw,secondDeposit,secondDraw);
+
+    this.canoneAnnuo = canoneAnnuo;
+  } 
+  getFirstDeposit() {
+    return this.balance + this.firstDeposit;
+  }
+  getFirstDraw() {
+    return this.getFirstDeposit() - this.firstDraw;
+  }
+  getSecondDeposit() {
+    return this.getFirstDraw() + this.secondDeposit;
+  }
+  getSecondDraw() {
+    return this.getSecondDeposit() - this.secondDraw;
+  }
+  getCanoneAnnuo() {
+    return (this.getSecondDraw() * this.canoneAnnuo) / 100;
+  }
+  getTotalAccount() {
+    return this.getSecondDeposit() - this.getCanoneAnnuo();
+  }
+}
+let mother = new MotherAccount(0,600,200,100,300,5);
+console.log(mother.getTotalAccount());
+
+
+
+
+
+class BankAccount {
+
+  getFirstDeposit(balance = 0, firstDeposit = 500) {
+    return balance + firstDeposit;
+  }
+  getFirstDraw(firstDraw = 200) {
+    return this.getFirstDeposit() - firstDraw;
+  }
+  getSecondDeposit(secondDeposit = 100) {
+    return this.getFirstDraw() + secondDeposit;
+  }
+  getTotalAccount(secondDraw = 50) {
+    return this.getSecondDeposit() - secondDraw;
+  }
+}
+let banca = new BankAccount();
+console.log(account.getTotalAccount());
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 class Professionista {
   redditoAnnuoLordo = 0
   coeffReddito = 0
@@ -687,6 +789,379 @@ console.log(netto.getRedditoNetto());
 
 
 
+/*
+class Psicologa {
+  redditoAnnuoLordo = 0
+  coeffReddito = 0
+  aliquotaInps = 0
+  aliquotaIrpef = 0
+
+  constructor(redditoAnnuoLordo,coeffReddito,aliquotaInps,aliquotaIrpef) {
+    this.redditoAnnuoLordo = redditoAnnuoLordo;
+    this.coeffReddito = coeffReddito;
+    this.aliquotaInps = aliquotaInps;
+    this.aliquotaIrpef = aliquotaIrpef;
+  }
+  getUtileTasse() {
+    return (this.redditoAnnuoLordo * this.coeffReddito) / 100;
+  }
+  getInps() {
+    return (this.getUtileTasse() * this.aliquotaInps) / 100;
+  }
+  getIrpef() {
+    return (this.getUtileTasse() * this.aliquotaIrpef) / 100;
+  }
+  getRedditoNetto() {
+    return (this.redditoAnnuoLordo - (this.getInps() + this.getIrpef()));
+  } 
+}
+let nettoPsicologa = new Psicologa(50000,78,26,15);
+console.log("REDDITO ANNUO NETTO PSICOLOGA: " + nettoPsicologa.getRedditoNetto());
 
 
+
+
+
+
+class Artigiano extends Psicologa {
+  importoEccedente = 0;
+  costoFissoInps = 0;
+
+  constructor(redditoAnnuoLordo,coeffReddito,aliquotaInps,aliquotaIrpef,importoEccedente,costoFissoInps) {
+    super(redditoAnnuoLordo, coeffReddito, aliquotaInps, aliquotaIrpef);
+    this.importoEccedente = importoEccedente;
+    this.costoFissoInps = costoFissoInps;
+  }
+
+  getInps() {
+    return (this.getUtileTasse() * this.aliquotaInps + this.getUtileTasse() * this.aliquotaIrpef);
+  }
+
+  getUtileEccedente() {
+    return (
+      ((this.redditoAnnuoLordo - this.importoEccedente) * this.coeffReddito) / 100
+    );
+  }
+
+  getInps() {
+    return (this.getUtileEccedente() * this.aliquotaInps) / 100;
+  }
+
+  getRedditoNetto() {
+    console.log("annuo lordo Artigiano: " + this.redditoAnnuoLordo);
+    console.log("ral Artigiano: " + this.coeffReddito);
+    return (this.redditoAnnuoLordo - (this.getIrpef() + this.getInps() + this.costoFissoInps));
+  }
+}
+let artigiano = new Artigiano(90000, 67, 24, 15, 15000, 3500);
+console.log("REDDITO ANNUO NETTO ARTIGIANO: " + artigiano.getRedditoNetto());
+
+
+
+class Avvocato extends Psicologa {
+  
+  constructor(redditoAnnuoLordo,coeffReddito,aliquotaInps,aliquotaIrpef) {
+    super(redditoAnnuoLordo, coeffReddito, aliquotaInps, aliquotaIrpef);
+  }
+  getUtileTasse() {
+    return (this.redditoAnnuoLordo * this.coeffReddito) / 100;
+  }
+  getInps() {
+    return (this.getUtileTasse() * this.aliquotaInps) / 100;
+  }
+  getIrpef() {
+    return (this.getUtileTasse() * this.aliquotaIrpef) / 100;
+  }
+  getRedditoNetto() {
+    return (this.redditoAnnuoLordo - (this.getInps() + this.getIrpef()));
+  } 
+}
+let nettoAvvocato = new Avvocato(80000,78,26,15);
+console.log("REDDITO ANNUO NETTO AVVOCATO: " + nettoAvvocato.getRedditoNetto());
+
+
+
+
+class Elettricista extends Artigiano{           ////////////DA RIVEDERE (SISTEMARE PRIMA CLASSE ARTIGIANO)//////
+  
+  constructor(redditoAnnuoLordo,coeffReddito,aliquotaInps,aliquotaIrpef,importoEccedente,costoFissoInps) {
+    super(redditoAnnuoLordo, coeffReddito, aliquotaInps, aliquotaIrpef,importoEccedente,costoFissoInps);
+  }
+  getInpsIrpef(aliquotaInps = 24, aliquotaIrpef = 15) {
+    return (this.getUtileTasse() * aliquotaInps + this.getUtileTasse() * aliquotaIrpef); 
+  }
+
+  getUtileEccedente(redditoAnnuoLordo = 70000,importoEccedente = 15000,coeffReddito = 67) {
+    return (((redditoAnnuoLordo - importoEccedente) * coeffReddito) / 100);
+  }
+
+  getInps(aliquotaInps = 24) {
+    return (this.getUtileEccedente() * aliquotaInps) / 100;
+  }
+
+  getRedditoNetto(redditoAnnuoLordo = 70000,costoFissoInps = 3500) {
+    return (redditoAnnuoLordo - (this.getIrpef() + this.getInps() + costoFissoInps));
+  }
+}
+let nettoElettricista = new Elettricista();
+console.log("REDDITO ANNUO NETTO ELETTRICISTA: " + nettoElettricista.getRedditoNetto());
+*/
+
+
+
+
+
+
+
+/*
+/*Scrivere la classe Motorino che ha i seguenti attributi 
+colore: una stringa indicante il colore del motorino, 
+velocità: un numero con la virgola indicante la velocità in Km/h che possiede il motorino, 
+tipo: una stringa indicante la marca e il modello del motorino es. “Piaggio scarabeo”, 
+l’attributo antifurto un boolean che indica se è stato inserito l’antifurto (ha un valore iniziale pari a false). 
+Il costruttore ha come parametri una stringa per il colore, 
+una stringa per il tipo, 
+un numero con la virgola per la velocità 
+ed assegna opportunamente i valori dei parametri agli attributi. 
+Scrivere il metodo getVelocità che restituisce la velocità del motorino, 
+scrivere inoltre il metodo accelera che ha come parametro un numero con la virgola indicante i Km/h 
+che si vogliono aggiungere alla velocità, 
+il metodo verifica il valore dell’attributo antifurto se è false 
+aggiunge il valore del parametro all’attributo velocità, altrimenti non fa nulla. 
+Scrivere il metodo inserisciAntifurto che assegna un valore true all’attributo antifurto.*/
+/*
+class Motorino{
+    colore = "Nero";
+    velocità = 50.4;
+    tipo = "Piaggio Scarabeo";
+    antifurto = false;
+
+    constructor(colore, tipo, velocità, antifurto){
+        this.colore = colore;
+        this.tipo = tipo;
+        this.velocità = velocità;
+        this.antifurto = antifurto;
+    }
+    getVelocità() {
+        return this.velocità;
+    }
+    accelera(kmAggiunti) {
+        if(!this.antifurto){
+            this.velocità += kmAggiunti;
+        } else {
+            console.log("Non è consentito accelerare");
+        }
+    }
+    inserisciAntifurto() {
+        this.antifurto = true;
+    }
+}
+let motorino = new Motorino("Nero", "Piaggio Scarabeo", 50.4, false);
+console.log("Velocità iniziale: ", motorino.getVelocità());
+motorino.accelera(20.4);
+console.log("Velocità raggiunta con l'accelerazione: " + motorino.getVelocità());
+motorino.inserisciAntifurto();
+motorino.accelera(20.4);
+console.log("Inserito l'antifurto, il motorino non accelera, la velocità è: " + motorino.getVelocità());
+
+/*•Scrivere la classe MotorinoImmatricolato sottoclasse della classe Motorino che ha in più 2 attributi: 
+maxVelocità un numero con la virgola (coerente con la scelta fatta per l’attributo velocità) 
+indicante la velocità massima in Km/h che il motorino può raggiungere; 
+targa una stringa indicante la targa del motorino 
+(ad entrambi gli attributi viene assegnato un valore nel costruttore). 
+Aggiungere il metodo getMax il metodo stampa il valore dell’attributo maxVelocità. 
+Ridefinire il metodo accelera in modo che prima di modificare la velocità 
+effettui un controllo sulla velocità massima raggiunta. 
+Il metodo definisce una variabile s (dello stesso tipo di velocità) 
+ed assegna ad s la somma tra il valore del parametro del metodo ed il valore dell’attributo velocità; 
+se s è minore del valore dell’attributo maxVelocità assegna il valore di s all’attributo velocità 
+altrimenti assegna all’attributo velocità il valore dell’attributo maxVelocità.*/
+/*
+class MotorinoImmatricolato extends Motorino{
+  maxVelocità = 100;
+  targa = "AD2334AD";
+
+  constructor(colore, tipo, velocità, antifurto, maxVelocità, targa){
+    super(colore, tipo, velocità, antifurto);
+      this.maxVelocità = maxVelocità;
+      this.targa = targa;
+    }
+    getMax(){
+    return this.maxVelocità;
+    }
+    accelera(kmAggiunti){
+      if(!this.antifurto){
+        let s = this.velocità + kmAggiunti;
+            if(s < this.maxVelocità){
+              this.maxVelocità = s;
+            } else {
+              this.velocità = this.maxVelocità;
+            }
+        } else {
+        console.log("Impossibile accelerare, l'antifurto è stato inserito. ");
+        }
+      }
+    }
+    let motorino1 = new MotorinoImmatricolato("Nero", "Piaggio Scarabeo", 50.4, false, 100, "AD2334AD");
+    console.log("Velocità attuale: " + motorino1.getVelocità());
+    console.log("Velocità massima consentita: " + motorino1.getMax());
+    motorino1.accelera(51);
+    console.log("Velocità dopo la prima accelerazione: " + motorino1.getVelocità());
+    motorino1.inserisciAntifurto();
+    motorino1.accelera(10);
+    console.log("Velocità dopo la seconda accelerazione: " + motorino1.getVelocità());
+*/
+
+
+
+
+/*
+//Scrivere la classe Dipendente che ha i seguenti attributi 
+// matricola: una stringa indicante il numero di matricola del dipendente, 
+// stipendio: un numero con la virgola indicante lo stipendio base che possiede il dipendente, 
+// straordinario: un numero con la virgola indicante l’importo dovuto 
+// per ciascuna ora di straordinario effettuata dal dipendente.
+// Il costruttore ha come parametri una stringa per la matricola, 
+// un numero con la virgola per lo stipendio 
+// ed un numero con la virgola per lo straordinario 
+// ed assegna opportunamente i valori dei parametri agli attributi.
+// Scrivere il metodo getStipendio che restituisce il valore dell’attributo stipendio, 
+// scrivere inoltre il metodo paga che ha come parametro 
+// un numero intero indicante il numero di ore di straordinario effettuate dal dipendente, 
+// il metodo restituisce il valore ottenuto sommando all’attributo stipendio 
+// il risultato del prodotto tra il parametro del metodo e l’attributo straordinario. 
+// Scrivere il metodo stampa che stampa il valore degli attributi della classe
+
+class Dipendente {
+  matricola = ""
+  stipendio = 0
+  straordinario = 0
+  constructor(matricola,stipendio,straordinario) {
+    this.matricola = matricola;
+    this.stipendio = stipendio;
+    this.straordinario = straordinario;
+  }
+  getStipendio() {
+    return this.stipendio;
+  }
+  getPaga(oreExtra = 10) {
+    return (this.getStipendio() + (oreExtra * this.straordinario));
+  }
+}
+let dipendente = new Dipendente("DP00155",1500.50,10.5);
+console.log("STIPENDIO BASE: " + dipendente.getStipendio());
+console.log("STIPENDIO NETTO DIPENDENTE: " + dipendente.matricola + " = €" + dipendente.getPaga());
+
+//Scrivere la sottoclasse DipendenteA della classe Dipendente che ha in più l’attributo 
+// malattia: un numero intero indicante i giorni di malattia presi che viene inizializzato a zero. 
+// Aggiungere il metodo prendiMalattia che ha come parametro un numero intero indicante i giorni di malattia presi, 
+// il metodo modifica il valore dell’attributo malattia aggiungendogli il valore del parametro. 
+// Ridefinire il metodo paga in modo che prima definisce una variabile p 
+// a cui assegna il valore ottenuto richiamando il metodo paga della superclasse, 
+// poi se l’attributo malattia è uguale a zero il metodo restituisce il valore di p 
+// altrimenti restituisce il valore ottenuto sottraendo a p il valore del prodotto tra malattia e 15,0. 
+// Definire un metodo stampaMalattia che stampa il valore dell’attributo malattia
+
+class DipendenteA extends Dipendente {
+  malattia = 0
+  constructor(matricola,stipendio,straordinario,malattia) {
+    super(matricola,stipendio,straordinario) 
+    this.malattia = malattia;
+  }
+  getPrendiMalattia(giorniPresi = 5)  {
+    return this.malattia += giorniPresi;    
+  }
+  getPagaEffettiva(p = this.getPaga()) {
+    if (this.malattia === 0) {
+      return p;
+    }
+    else {
+      return (p - (this.malattia * 15.0));
+    }
+  }
+  getStampaMalattia() {
+    return this.getPrendiMalattia();
+  }
+}
+let dipendenteA = new DipendenteA("DP00155",1500.50,10.5,0);
+console.log("GIORNI DI MALATTIA: " + dipendenteA.getStampaMalattia());
+console.log("STIPENDIO EFFETTIVO CON STRAORDINARI E MALATTIE: €" + dipendenteA.getPagaEffettiva() + " DIPENDENTE: " + dipendenteA.matricola);
+*/
+
+
+
+//Scrivere la classe TipoCapoAbigliamento che ha i seguenti attributi 
+// marca:una stringa indicante la marca, 
+// modello: una stringa indicante il modello, 
+// costo:un numero con la virgola indicante il costo in euro. 
+// Il costruttore ha come parametri una stringa per la marca, 
+// una stringa per il modello, 
+// un numero con la virgola per il costo ed assegna opportunamente 
+// i valori dei parametri agli attributi. 
+// Scrivere il metodo getCosto che stampa il valore dell’attributo costo. 
+// Scrivere inoltre il metodo applicaSconto che ha come il parametro 
+// un numero con la virgola indicante la percentuale di sconto che si vuole applicare, 
+// il metodo restituisce il costo del capo di abbigliamento scontato 
+// ossia il risultato della sottrazione tra costo e costo moltiplicato il valore del parametro 
+// diviso 100. 
+// Scrivere il metodo modificaCosto che ha come parametro un numero con la virgola 
+// (dello stesso tipo di costo) indicante il nuovo costo 
+// ed assegna all’attributo costo il valore del parametro.
+/*
+class TipoCapoAbigliamento {
+  marca = ""
+  modello = ""
+  costo = 0
+  
+  constructor(marca,modello,costo) {
+    this.marca = marca;
+    this.modello = modello;
+    this.costo = costo;
+  }
+  getCosto() {
+    return this.costo;
+  }
+  getApplicaSconto(valSconto = 10) {
+    return (this.costo - ((this.costo * valSconto) / 100));
+  }
+  getModificaCosto(nuovoCosto = 25.50) {
+    return this.costo = nuovoCosto;
+  }
+}
+let capo = new TipoCapoAbigliamento("Adidas","T-Shirt",35.50);
+console.log("PREZZO CAPO: €" + capo.getCosto());
+console.log("PREZZO CAPO SCONTATO: €" + capo.getApplicaSconto());
+console.log("NUOVO PREZZO CAPO: €" + capo.getModificaCosto());
+
+//Scrivere la classe CapoAbbigliamento sottoclasse della classe TipoCapoAbbigliamento 
+// che ha in più 3 attributi: taglia un numero intero che indica la taglia; 
+// quantitàAcquistata un numero intero indicante il numero di pezzi acquistati, 
+// quantitàDisponibile un numero intero indicante il numero di pezzi disponibili 
+// (agli attributi viene assegnato un valore del costruttore). 
+// Scrivere il metodo venduto avente come parametro 
+// un numero intero indicante il numero di capi venduti, 
+// il metodo se quantitàDisponibile è maggiore del risultato della sottrazione 
+// tra quantitàDisponibile ed il parametro, 
+// modifica il valore dell’attributo quantitàDisponibile sottraendogli il valore del parametro. 
+// Scrivere il metodo getDettagli che stampa tutti gli attributi della classe.
+
+class CapoAbbigliamento extends TipoCapoAbigliamento {
+  taglia = 0
+  quantitàAcquistata = 0
+  quantitàDisponibie = 0
+  constructor(marca,modello,costo,taglia,quantitàAcquistata,quantitàDisponibie) {
+    super(marca,modello,costo) 
+    this.taglia = taglia;
+    this.quantitàAcquistata = quantitàAcquistata;
+    this.quantitàDisponibie = quantitàDisponibie;
+  }
+  getVenduto(capiVenduti = 5) {
+    
+  }
+
+
+
+}
+
+*/
 

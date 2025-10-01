@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="welcome">Benvenuto in HTML</h1>
+    <h1 id="javascript">javascript</h1>
+    <a id="link">Google</a>
+    <h3 id="element"></h3>
+    <button id="click">Clicca Qui!</button> <br><br>
+    <button onclick="changeText(this)">Testo Cambiato</button> <br><br>
+    <div id="onMouse" onmouseover="mouseOver()" onmouseout="mouseOut()">
+      Mouse over me
+    </div>
+    <div id="mouseSu" style="width: 100px; height: 100px; 
+    background-color: yellow;" ondblclick="myDiv(this)">Clicca 2 Volte</div>
+    <button onclick="myButton(this)">CLICCA QUI!</button>
+    <br>
+    <p id="crono"></p>
+    <p id="intervallo"></p>
+
+
+
+
+
+     <script>
+        //SOVRASCRIVE HTML (VER 1)
+        document.getElementById("javascript").innerHTML ="JAVASCRIPT"; 
+        
+        document.getElementById("javascript").style.marginLeft = "20%"
+        document.getElementById("javascript").style.marginRight = "20%"
+        document.getElementById("javascript").style.color = "brown";
+        document.getElementById("javascript").style.backgroundColor = "yellow";
+        document.getElementById("javascript").style.textAlign = "center";
+        document.getElementById("javascript").style.fontFamily = "Courier";
+        document.getElementById("javascript").style.fontSize = "50px";
+
+        //SOVRASCIVE HTML (VER 2)
+        let js = (document.getElementById("welcome").innerHTML="Benvenuto in JAVASCRIPT"); 
+        
+        document.getElementById("welcome").style.marginLeft = "20%"
+        document.getElementById("welcome").style.marginRight = "20%"
+        document.getElementById("welcome").style.color = "brown";
+        document.getElementById("welcome").style.backgroundColor = "yellow";
+        document.getElementById("welcome").style.textAlign = "center";
+        document.getElementById("welcome").style.fontFamily = "Courier";
+        document.getElementById("welcome").style.fontSize = "50px";
+
+        document.getElementById("link").setAttribute("href", "https://www.google.com");
+        document.getElementById("link").style.color = "yellow";
+        document.getElementById("link").style.backgroundColor = "green";
+        document.getElementById("link").style.display = "block";
+        document.getElementById("link").style.textAlign = "center"
+        document.getElementById("link").style.fontFamily = "Courier";
+        document.getElementById("link").style.fontSize = "100px";
+        document.getElementById("link").style.marginLeft = "15%"
+        document.getElementById("link").style.marginRight = "15%"
+
+
+
+        let para = document.createElement("h3"); //inizio document.createElement
+        let node = document.createTextNode("Create New Element");
+        para.appendChild(node);
+        let element = document.getElementById("element");
+        element.appendChild(para);
+
+        //Traccia: Crea un bottone che chiama una funzione quando viene cliccato.
+        function cliccato() {
+        alert("Hello World!");
+        }
+        let fun = document.getElementById("click").addEventListener("click", cliccato);
+        
+        //Traccia: Cambia il testo del bottone quando viene cliccato.
+        function changeText(btn) {
+            btn.innerText="STO CAMBIANDO IL TESTO";
+        }
+
+        //Traccia: Crea un div che diventa rosso al doppio click.
+        function mouseOver() {
+        document.getElementById("onMouse").style.color = "red";
+        }
+        function mouseOut() {
+        document.getElementById("onMouse").style.color = "green";
+        }
+
+        function myDiv(element) {
+            element.style.background = "red";
+        }
+
+        //Traccia: Crea un bottone che, quando cliccato, diventa disabilitato.
+        function myButton(mb) {
+            mb.disable = true;
+            mb.innerText = "DISABILTATO";
+        }
+
+        //Evento temporizzato
+        setTimeout(timeout, 5000);
+        function timeout() {
+        document.getElementById("crono").innerHTML = "TEMPO SCADUTO";
+        document.getElementById("crono").style.color = "red";
+        document.getElementById("crono").style.fontSize = "50px"
+        document.getElementById("crono").style.textAlign = "center";
+        }
+        //set intervallo 
+        setInterval(interval, 1000);
+        function interval() {
+        let d = new Date();
+        document.getElementById("intervallo").innerHTML = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+        document.getElementById("intervallo").style.color = "red";
+        document.getElementById("intervallo").style.fontSize = "60px";
+        }
+
+
+        /*
+        //Traccia: Crea una funzione che mostra in console un messaggio dopo 2
+        function mostraMsgDopoDueSec() {
+        setTimeout(() => {console.log("hello world");}, 2000);
+        }
+        mostraMsgDopoDueSec();
+
+        //Traccia: Crea una funzione che prende un nome e lo mostra dopo 1 secondo.
+        function getAndShowNome(nome) {
+        setTimeout(() => {console.log(nome);}, 1000);
+        }
+        getAndShowNome("Mario");
+
+        //Traccia: Crea una funzione che conta da 1 a 5 con setInterval.
+        function countFromOneToFive() {
+        let n = 1;
+        setInterval(() => {
+          if (n < 6) {
+            console.log(n);
+          }
+          n++;
+         }, 1000);
+        }
+        countFromOneToFive();
+
+
+
+        //Traccia: Crea una funzione che parte da un numero e fa un conto alla rovescia.
+      function contoAllaRovescia(partenza){
+        let numero = partenza;
+
+        const timer = setInterval(() => {
+            console.log(numero);
+
+            if(numero === 0){
+                clearInterval(timer);
+                console.log("Tempo scaduto. ");
+            }
+
+            numero--;
+        }, 1000);
+      }
+      contoAllaRovescia(10);
+
+      //Traccia: Crea una funzione che alterna tra “ON” e “OFF” ogni 2 secondi.
+      function alterna(){
+        let stato = false;
+
+        setInterval(() => {
+            stato = !stato;
+            console.log(stato ? "ON" : "OFF");
+        }, 2000);
+      }
+      alterna();
+
+
+       //Traccia: Crea una funzione che mostra “Ping” ogni secondo per 3 volte.
+       function mostra(){
+        let count = 0;
+
+        const intervallo = setInterval(() =>{
+            console.log("Ping");
+            count++;
+
+            if(count == 3){
+                clearInterval(intervallo);
+            }
+        }, 1000);
+      }
+      mostra();
+      */
+        /*
+        //Traccia: Chiedi all’utente se vuole continuare e mostra un messaggio in base alla risposta.
+         let exit = false;
+      while (!exit) {
+        let scelta = prompt("CIAO VUOI CONTINUARE? (SI/NO)");
+        if (scelta == "SI") {
+          alert("BRAVO OTTIMA SCELTA");
+        }
+        if (scelta == "NO") {
+          alert("ARRIVERDERCI");
+          exit = confirm("Sei sicuro che vuoi uscire?");
+        } else {
+          alert("RISPOSTA NON CORRETTA");
+        }
+      }*/
+
+
+
+        /*
+        //Traccia: Usa prompt per chiedere il nome e salutarlo.
+        let exit = false;
+      while (!exit) {
+        let nome = prompt("CIAO COME TI CHIAMI?");
+            alert("CIAO " + nome + " BENVENUTO!!!");
+        let scelta = prompt("VUOI CONTINUARE? (SI/NO)")
+        scelta = scelta ? scelta.toLowerCase() : "";    
+        if (scelta == "no") {
+          alert("ARRIVERDERCI");
+          exit = true;
+        } else {
+          exit = false;
+        }
+      }
+        */
+
+
+        /*
+        // Traccia: Chiedi una password e controlla se è corretta.
+      let pass = prompt("INSERISCI PASSWORD");
+      if (pass == 1234) {
+        alert("BRAVO PASSWORD CORRETTA");
+      } else {
+        alert("VAI DAL MEDICO");
+      }
+        */
+
+
+
+     </script>
+</body>
+</html>
