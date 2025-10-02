@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let varJson = '{"nome": "Riccardo","cognome": "Casalanguida", "età": 39}';
+        let conversione = JSON.parse(varJson);
+        console.log(conversione);
+
+        let jsonOgg = { nome: "Riccardo", cognome: "Casalanguida", età: 39 };
+        let convertiJSO = JSON.stringify(jsonOgg);
+        console.log(convertiJSO)
+
+        //CHIAMATE HTTP (RICHIAMA DATI NEL FILE testJson.json)
+        async function fetchAPI() {
+            const url =
+                "https://mocki.io/v1/d0e1c85f-43b0-45ec-a3b3-1d3f8fccb0f6";
+            const response = await fetch(url);
+            const resp = await response.json();
+            return resp;
+        }
+        fetchAPI().then(console.log);
+
+        //ESERCIZI
+        //Traccia: Crea un oggetto e trasformalo in stringa JSON.
+        let str = {tipo: "vestito", marca:"nike", prezzo: 100};
+        let strJson = JSON.stringify(str);
+        console.log(strJson);
+        
+        //Convertire una stringa JSON in oggetto 
+        // Traccia: Trasforma {"citta":"Roma","popolazione":3000000} in un oggetto.
+        let stJson = '{"citta":"Roma","popolazione":3000000}';
+        let conv = JSON.parse(stJson);
+        console.log(conv);
+        
+        //Traccia: Trasforma in oggetto la stringa JSON con array di utenti 
+        // e mostra il secondo nome
+        let arr = [{ nome: "Riccardo", età: 39 }, { nome: "Lucia", età: 37 }, { nome: "Mario", età: 40 }];
+            let arrStr = JSON.stringify(arr);         //.filter((a) => a.nome[1]);
+            console.log(arrStr);
+            let secNome = arr[1].nome;
+            let secNomeJson = JSON.stringify({nome:secNome});
+            console.log(secNomeJson);
+
+
+
+        //////////////////////RECUPERA IL FILE JSON
+        async function getUsers() {
+                const res = 'users.json'
+                fetch(res).then(risposta => {
+                        if (!risposta.ok) {
+                            throw new Error(`Errore o file non trovato: ${risposta.status}`);
+                        }
+                        return risposta.json();
+                    })
+                    .then(dati => {
+                        console.log('Dati JSON caricati con successo:', dati);
+                    })
+                    .catch(errore => {
+                        console.error('Errore durante il caricamento del JSON:', errore);
+                    });
+            }
+            getUsers();
+        /////////////////////////
+        
+        //Convertire un array in JSON
+        //Traccia: Trasforma l’array [1,2,3,4] in stringa JSON.
+        let numJson = '["1","2","3","4"]';
+        let convert = JSON.parse(numJson);
+        console.log(convert);
+        
+        
+        
+        //Filtrare dati da JSON
+        //Traccia: Dato un JSON con prodotti, mostra solo quelli con prezzo > 50.
+        /*let prodotti = [{ art: "mouse", prezzo: 39 }, { art: "tastiera", età: 59 }, { nome: "Mario", età: 40 }];
+            let arrStr = JSON.stringify(arr);         //.filter((a) => a.nome[1]);
+            console.log(arrStr);
+            let secNome = arr[1].nome;
+            let secNomeJson = JSON.stringify({nome:secNome});
+            console.log(secNomeJson);*/
+
+
+
+
+    </script>
+</body>
+
+</html>
+

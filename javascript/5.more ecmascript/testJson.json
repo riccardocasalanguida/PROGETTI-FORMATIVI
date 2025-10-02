@@ -1,0 +1,33 @@
+{
+    "info":"talentform",
+    "data":[
+    {
+        "id":1,
+        "tipo":"laptop",
+        "cpu":5,
+        "marca":"lenovo",
+        "accessori": ["cuffie","microfono","mouse"],
+    },
+    {
+        "id":2,
+        "tipo":"fisso",
+        "cpu":7,
+        "marca":"asus",
+        "accessori": ["cuffie","microfono","webcam","mouse"]
+    },
+    {
+        "id":3,
+        "tipo":"notebook",
+        "cpu":5,
+        "marca":"msi",
+        "accessori": ["cuffie","mouse"]
+    },
+    {
+        "id":4,
+        "tipo":"laptop",
+        "cpu":9,
+        "marca":"",
+        "accessori": ["cuffie","microfono","mouse"]
+    }
+    ]
+}

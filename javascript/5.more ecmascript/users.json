@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "name": "Fabio",
-    "surname": "Di Gloria",
+    "name": "Riccardo",
+    "surname": "Casalanguida",
     "age": 39,
     "technology_expert": ["Flutter", "React", "ioS"],
     "city": "Turin",
