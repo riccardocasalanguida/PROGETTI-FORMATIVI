@@ -16,85 +16,121 @@ console.log("CRESCENTE: " + arr.sort());
 console.log(" ");
 console.log("REVERSE: " + arr.reverse());
 console.log(" ");*/
-//ESERCIZI
-//Crea un array di interi e stampane ogni elemento.
-let arr1 = [5, 15, 10, 20, 10, 25];
-for (let i = 0; i < arr1.length; i++) {
-    console.log(arr1[i]);
+const mario = { nome: "Mario", età: 30 };
+console.log(mario);
+console.log("");
+function res(x) {
+    console.log("Esito: ", x);
 }
-;
-console.log(" ");
-//Calcola la somma di tutti gli elementi di un array.
-let somma = 0;
-for (let i = 0; i < arr1.length; i++) {
-    somma += arr1[i];
-}
-;
-console.log("LA SOMMA DEI VALORI DELL'ARRAY 'arr1' E': " + somma);
-console.log(" ");
-//Calcola la media aritmetica degli elementi di un array.
-let media = 0;
-for (let i = 0; i < arr1.length; i++) {
-    somma += arr1[i];
-}
-;
-media = somma / arr1.length;
-console.log("LA MEDIA DEI VALORI E': " + media);
-console.log(" ");
-//Trova il valore massimo in un array di interi.
-let valMax = arr1[0];
-for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] > valMax) {
-        valMax = arr1[i];
+res("success");
+console.log("");
+////////////////////////////////////////////////////////////////////
+//Array tipizzato
+//Traccia: Crea un tipo Studente e un array di studenti.
+class Studente {
+    constructor(nome, cognome, matricola, dataDiNascita, luogoDiNascita) {
+        this.nome = "";
+        this.cognome = "";
+        this.dataDiNascita = "";
+        this.luogoDiNascita = "";
+        this.nome = nome;
+        this.cognome = cognome;
+        this.matricola = matricola;
+        this.dataDiNascita = dataDiNascita;
+        this.luogoDiNascita = luogoDiNascita;
+    }
+    toString() {
+        return JSON.stringify({
+            nome: this.nome,
+            cognome: this.cognome,
+            matricola: this.matricola,
+            data_di_nascita: this.dataDiNascita,
+            luogo_di_nascita: this.luogoDiNascita
+        });
     }
 }
-;
-console.log("IL VALORE MASSIMO E': " + valMax);
-console.log(" ");
-//Trova il valore minimo in un array di interi.
-let valMin = arr1[0];
-for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] < valMin) {
-        valMin = arr1[i];
-    }
+let studenti = [];
+studenti.forEach((valore) => {
+    console.log(valore.toString());
+});
+studenti.forEach((valore) => {
+    console.log(JSON.parse(valore.toString()));
+});
+console.log("");
+const somma = (x, y) => x + y;
+console.log(somma(5, 3));
+console.log("");
+const p1 = { tipo: "carta", numero: "1234-5678" };
+const p2 = { tipo: "contanti", importo: 50 };
+console.log(p1, p2);
+console.log("");
+const lavor1 = {
+    nome: 'Luca',
+    grade: ['Team Leader'],
+    worker: 'Developer',
+    startDate: new Date(),
+};
+console.log("");
+function stud() {
+    const g = {
+        nome: "mario",
+        corso: "archeologia",
+        città: "agrigento",
+        via: "via roma 1"
+    };
+    console.log(g);
 }
-;
-console.log("IL VALORE MINIMO E': " + valMin);
-console.log(" ");
-//Conta il numero di elementi pari in un array.
-let cont = 0;
-for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] % 2 == 0) {
-        cont++;
-    }
+stud();
+console.log("");
+function dati() {
+    const d = {
+        targa: "AB 123 CD",
+        tipo: "auto",
+        scadenza: "15/12/25",
+        compagnia: "generali"
+    };
+    console.log(d);
 }
-;
-console.log("I VALORI PARI SONO: " + cont);
-console.log(" ");
-//Stampa gli elementi dell’array in ordine inverso.
-for (let i = arr1.length - 1; i >= 0; i--) {
-    console.log(arr1[i]);
+dati();
+console.log("");
+function info() {
+    const p = {
+        nome: "Riccardo",
+        età: 39,
+        email: "riccardo@casalanguida.it",
+        telefono: 3293344333,
+        azienda: "Generali",
+        ruolo: "IT support",
+        sport: "Ciclismo"
+    };
+    console.log(p);
 }
-;
-console.log(" ");
-//Controlla se un numero dato (es. 10) è presente nell’array.
-let presente = false;
-for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] == 10) {
-        presente = true;
-    }
-}
-;
-console.log("10 E' PRESENTE NELL'ARRAY? " + (presente ? "SI" : "NO"));
-console.log(" ");
-//Conta quanti elementi nell’array sono maggiori di 10.
-let contatore = 0;
-for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] > 10) {
-        contatore++;
-    }
-}
-;
-console.log("I VALORI MAGGIORI DI 10 SONO: " + contatore);
-console.log(" ");
+info();
+console.log("");
+let persona = {
+    nome: "Mario",
+    eta: 30,
+    email: "mario@yopmail.com",
+    telefono: 345111111111,
+};
+let lavoro = {
+    azienda: "AAA srl",
+    ruolo: "Manager",
+};
+let hobby = {
+    sport: "Basket",
+};
+let unione = {
+    nome: persona.nome,
+    eta: persona.eta,
+    email: persona.email,
+    telefono: persona.telefono,
+    azienda: lavoro.azienda,
+    ruolo: lavoro.ruolo,
+    sport: hobby.sport,
+};
+console.log(unione);
+//{id: number; nome: string; età: number} = {id: 1, nome: "Riccardo", età: 39};
+//let arr1: number[] = [5,15,10,20,10,25];
+//tsc && node test
 //# sourceMappingURL=test.js.map
