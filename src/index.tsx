@@ -1,15 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+//import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Padre from './1-Introduction/esercizi-components/Padre';
+//import IntroductionComponent from './1-Introduction/2-custom-component/IntroductionComponent';
+//IntroductionComponent
+
+
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <Padre />
   </React.StrictMode>
 );
 
