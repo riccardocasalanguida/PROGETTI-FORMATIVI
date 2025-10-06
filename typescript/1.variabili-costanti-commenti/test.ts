@@ -595,7 +595,7 @@ descriviStagione(st);
 */
 
 
-
+/*
 /////////   CUSTOM-TYPE     /////////
 
 //Type alias con più campi
@@ -678,9 +678,11 @@ const p1: Pagamento = { tipo: "carta", numero: "1234-5678" };
 const p2: Pagamento = { tipo: "contanti", importo: 50 };
 console.log(p1, p2);
 console.log("");
+*/
 
 
 
+/*
 ///// INTERSECTION-TYPE ///////
 type Admin1={
   nome:string;
@@ -823,6 +825,208 @@ let unione: Unione = {
   sport: hobby.sport,
 };
 console.log(unione);
+*/
+
+
+
+
+
+
+/*
+//////////// GENERICS //////////
+function test1<C>(val: C): C {
+    return val;
+}
+let res = test1<number>(10);
+let res1 = test1<string>("Hello World");
+let res2 = test1<boolean>(true);
+console.log(res);
+console.log(res1);
+console.log(res2);
+console.log("");
+
+
+
+//Array generico
+//Traccia: Crea una funzione che accetta un array generico e ne restituisce la lunghezza.
+function arrGen<A>(arrG: A[]): any {
+    return arrG.length;
+}
+let arrG = [10,20,30];
+let arrRes = arrGen<number>(arrG);
+console.log(arrRes);
+console.log("");
+
+
+
+//Traccia: Crea un tipo generico Coppia<T, U> che contiene due valori.
+type Coppia<T, U> = {nome: T, eta: U};
+let coppia: Coppia<string, number> = {
+  nome: "Mario",
+  eta: 50,
+};
+console.log(coppia);
+console.log("");
+
+
+
+//Traccia: Crea una funzione che accetta un array di tipo generico e stampa ogni elemento.
+function arrStampa<T>(arr: T[]) : void {
+    for(let element of arr) {
+        console.log(element);
+    }
+}
+arrStampa([1, 2, 3, 4, 5, 6]);
+console.log("");
+
+
+
+//Traccia: Crea una funzione che combina due valori generici in una tupla.
+function tuplaCombine<T, U>(a: T, b: U) : [T, U] {
+    return [a, b];
+}
+console.log(tuplaCombine("mario", 36));
+console.log("");
+
+
+
+//Traccia: Crea un tipo generico Coppia<T, U> che contiene due valori.
+function coppia1<T, U>(valA: T, valB: U): T {
+    return valA;
+}
+let copp = coppia1<number, number>(10,20);
+console.log(copp);
+console.log("");
+
+
+//Traccia: Crea una funzione che accetta un array generico e ne restituisce la lunghezza.
+function arrNomi<T>(arr: T[]): any {
+    return arr.length;
+}
+let arrNam = arrNomi<string>(["Mario","Lucia","Riccardo"]);
+console.log(arrNam);
+console.log("");
+//////// DIVERSI MODI DI ASSEGNAZIONE VALRI ARRAY //////////////
+function arrGen1<A>(arrG1: A[]): any {
+    return arrG.length;
+}
+let arrG1 = [10,20,30];
+let arrRes1 = arrGen1<number>(arrG);
+console.log(arrRes1);
+console.log("");
+
+
+//Traccia: Crea una funzione che accetta un array di tipo generico e stampa ogni elemento.
+function arrNumb<T>(arr: T[]): any {
+    for(let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+    }
+}
+arrNumb<number>([10,20,30,40,50]);
+console.log("");
+//////// VERSIONE 2 ////////
+function arrStamp<T>(arr: T[]) : void {
+    for(let element of arr) {
+        console.log(element);
+    }
+}
+arrStamp([1, 2, 3, 4, 5, 6]);
+console.log("");
+
+
+
+//Generics con più parametri
+//Traccia: Crea una funzione che combina due valori generici in una tupla.
+function comb<T,U,V>(a:T, b:U, c:V): [T,U,V] {
+    return [a,b,c];
+}
+console.log(comb("Riccardo","Casalanguida",39));
+console.log("");
+
+
+
+//Mapper generico
+//Traccia: Crea una funzione che trasforma un array generico con map.
+function mapArray<T, U>(arr: T[], transform: (item: T) => U) : U[] {
+    return arr.map(transform);
+}
+const numeri = [1,2,3,4];
+const double = mapArray(numeri, n => n*2);
+console.log(double);
+*/
+
+
+
+
+
+
+/////////////// CLASSI ///////////////////
+class BankAccount1 {
+    private balance: number
+    private firstDeposit: number
+    private firstDraw: number
+    private secondDeposit: number
+    private secondDraw: number
+
+    constructor(balance,firstDeposit,firstDraw,secondDeposit,secondDraw) {
+
+            this.balance = balance
+            this.firstDeposit = firstDeposit
+            this.firstDraw = firstDraw
+            this.secondDeposit = secondDeposit
+            this.secondDraw = secondDraw
+        }
+    public getFirstDeposit(): number {
+        return this.balance + this.firstDeposit
+    }
+    public getFirstDraw(): number {
+        return this.getFirstDeposit() - this.firstDraw
+    }
+    public getSecondDeposit(): number {
+        return this.getFirstDraw() + this.secondDeposit
+    }
+    public getTotalAccont(): number {
+        return this.getSecondDeposit() - this.secondDraw
+    }
+}
+let account1 = new BankAccount1(0,300,100,50,30);
+console.log(`SALDO ATTUALE:                ${account1.getTotalAccont()}`);
+console.log("");
+
+
+
+
+class SonAccount {
+    private static balance: number
+    private static firstDeposit: number
+    private static firstDraw: number
+    private static secondDeposit: number
+    private static secondDraw: number
+
+    constructor(balance = 0,firstDeposit = 0,firstDraw = 0,secondDeposit = 0,secondDraw = 0) {
+
+            SonAccount.balance = balance  /////// **STATIC** NEL COSTRUTTORE RICHIAMA ATTRIBUTI CON NOME CLASSE (NON CON this.)////
+            SonAccount.firstDeposit = firstDeposit
+            SonAccount.firstDraw = firstDraw
+            SonAccount.secondDeposit = secondDeposit
+            SonAccount.secondDraw = secondDraw
+        }
+    public static getFirstDeposit(): number {
+        return SonAccount.balance + SonAccount.firstDeposit
+    }
+    public static getFirstDraw(): number {
+        return this.getFirstDeposit() - SonAccount.firstDraw
+    }
+    public static getSecondDeposit(): number {
+        return this.getFirstDraw() + SonAccount.secondDeposit
+    }
+    public static getTotalAccont(): number {
+        return this.getSecondDeposit() - SonAccount.secondDraw
+    }    
+}
+let accountSon = new SonAccount(0,500,100,200,100);
+console.log(`SALDO ATTUALE:                ${SonAccount.getTotalAccont()}`);
+console.log("");
 
 
 
@@ -830,9 +1034,65 @@ console.log(unione);
 
 
 
-//{id: number; nome: string; età: number} = {id: 1, nome: "Riccardo", età: 39};
-//let arr1: number[] = [5,15,10,20,10,25];
-//tsc && node test
+
+
+
+/////// ASTRATTE + INTERFACCE ///////////
+abstract class Professionista {
+    abstract getUtileTasse(): number
+}
+
+interface IProfessionista {
+    getTassaInps(): number
+    getTassaIrpef(): number
+}
+
+class LavoratoriAutonomi extends Professionista implements IProfessionista{
+
+    private redditoAnnuoLordo: number
+    private coeffRedd: number
+    private aliquotaInps: number
+    private aluquoraIrpef: number
+
+    constructor(redditoAnnuoLordo = 0,coeffRedd = 0,aliquotaInps = 0,aluquoraIrpef = 0) {
+            super()
+            this.redditoAnnuoLordo =redditoAnnuoLordo
+            this.coeffRedd = coeffRedd
+            this.aliquotaInps = aliquotaInps
+            this.aluquoraIrpef = aluquoraIrpef
+    }
+    public getUtileTasse(): number {
+        return this.redditoAnnuoLordo * this.coeffRedd / 100
+    }
+    public getTassaInps(): number {
+        return this.getUtileTasse() * this.aliquotaInps / 100
+    }
+    public getTassaIrpef(): number {
+        return this.getUtileTasse() * this.aluquoraIrpef / 100
+    }
+    public redditoAnnuoNetto(): number {
+        return this.redditoAnnuoLordo - (this.getTassaInps() + this.getTassaIrpef()) 
+    }
+}
+let reddito = new LavoratoriAutonomi(85000,78,26,15)
+console.log(`REDDITO NETTO:       ${reddito.redditoAnnuoNetto()}`);
+console.log("");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//tsc && node test **(test.ts)**
 
 
 
