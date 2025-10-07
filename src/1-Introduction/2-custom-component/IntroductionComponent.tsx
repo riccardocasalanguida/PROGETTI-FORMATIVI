@@ -14,3 +14,36 @@ const IntroductionComponent = () => {
 };
 
 export default IntroductionComponent;
+
+
+
+/////////// rafce /////////
+/*
+import React from 'react'
+
+const DaughterComponent = () => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default DaughterComponent
+*/
+
+
+//////////////  rfce  ///////////////
+/*
+import React from 'react'
+
+function DaughterComponent() {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default DaughterComponent
+*/

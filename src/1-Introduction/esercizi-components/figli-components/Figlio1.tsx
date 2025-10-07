@@ -5,7 +5,7 @@ Figlio2
 function Figlio1() {
   return (
     <div>
-        <h2 style={{fontFamily: "fantasy", fontSize: "100px", color: "green"}}>BUONGIORNO SONO FIGLIO 1</h2> 
+        <h2 style={{fontFamily: "fantasy", fontSize: "80px", color: "green", textAlign: "center"}}>BUONGIORNO SONO FIGLIO 1</h2> 
         <div>
             <Figlio2 />
         </div>     

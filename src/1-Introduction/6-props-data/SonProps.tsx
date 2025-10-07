@@ -1,5 +1,5 @@
 
-const SonProps: React.FC<{ surname: string; age: number; nation: string }> = (
+const SonProps: React.FC<{ surname: string; age: number; nation: string }>= (
   props
 ) => {
   return (

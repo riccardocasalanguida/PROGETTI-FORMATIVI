@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Padre from './1-Introduction/esercizi-components/Padre';
+import AnagraficaDati from './1-Introduction/esercizi2/AnagraficaDati';
+//import UsoState2 from './2-State/eserciziState/esercizi-comp/UsoState2';
+//import AnagraficaDati from './1-Introduction/esercizi2/AnagraficaDati';
+//import State1 from './2-State/eserciziState/State1';
+//import Padre from './1-Introduction/esercizi-components/Padre';
 //import IntroductionComponent from './1-Introduction/2-custom-component/IntroductionComponent';
 //IntroductionComponent
 
@@ -15,7 +19,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Padre />
+    <AnagraficaDati />
   </React.StrictMode>
 );
 
@@ -23,3 +27,7 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+
+
+
