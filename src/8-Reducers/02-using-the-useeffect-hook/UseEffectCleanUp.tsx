@@ -12,6 +12,10 @@ import { useEffect, useState } from 'react';
     return () => clearInterval(interval);
   }, [count]);
 
-  return <div>{count}</div>;
+  return <div style={{textAlign: "center",
+                    fontSize: "20px"
+                    }}>
+    
+    CONTATORE: {count}</div>;
 }
 export default UseEffectCleanUp;

@@ -1,6 +1,7 @@
 import React from "react";
 
 import StyleProps2 from "./StyleProps/StyleProps-2";
+
 const StyleProps = () => {
   const expenses = [
     {

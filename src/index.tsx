@@ -1,19 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-//import App from './App';
 import reportWebVitals from './reportWebVitals';
-//import AnagraficaArray from './1-Introduction/esercizi2/AnagraficaArray';
-//import Prodotti from './2-State/eserciziState/Prodotti';
-import Persona from './2-State/eserciziState/Persona';
-//import AnagraficaDati from './1-Introduction/esercizi2/AnagraficaDati';
-//import UsoState2 from './2-State/eserciziState/esercizi-comp/UsoState2';
-//import AnagraficaDati from './1-Introduction/esercizi2/AnagraficaDati';
-//import State1 from './2-State/eserciziState/State1';
-//import Padre from './1-Introduction/esercizi-components/Padre';
-//import IntroductionComponent from './1-Introduction/2-custom-component/IntroductionComponent';
-//IntroductionComponent
-
+//import UseEffect from './8-Reducers/02-using-the-useeffect-hook/test/UseEffect';
+import UseEffectCleanUp from './8-Reducers/02-using-the-useeffect-hook/UseEffectCleanUp';
+import TestUseEffect from './8-Reducers/02-using-the-useeffect-hook/test/TestUseEffect';
+import ContatoreCleanUp from './8-Reducers/02-using-the-useeffect-hook/test/ContatoreCleanUp';
 
 
 const root = ReactDOM.createRoot(
@@ -21,7 +13,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Persona />
+    <ContatoreCleanUp />
   </React.StrictMode>
 );
 
