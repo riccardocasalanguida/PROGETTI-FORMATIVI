@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
-import AnagraficaDati from './1-Introduction/esercizi2/AnagraficaDati';
+//import AnagraficaArray from './1-Introduction/esercizi2/AnagraficaArray';
+//import Prodotti from './2-State/eserciziState/Prodotti';
+import Persona from './2-State/eserciziState/Persona';
+//import AnagraficaDati from './1-Introduction/esercizi2/AnagraficaDati';
 //import UsoState2 from './2-State/eserciziState/esercizi-comp/UsoState2';
 //import AnagraficaDati from './1-Introduction/esercizi2/AnagraficaDati';
 //import State1 from './2-State/eserciziState/State1';
@@ -13,13 +16,12 @@ import AnagraficaDati from './1-Introduction/esercizi2/AnagraficaDati';
 
 
 
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <AnagraficaDati />
+    <Persona />
   </React.StrictMode>
 );
 

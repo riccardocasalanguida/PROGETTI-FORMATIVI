@@ -4,10 +4,18 @@ import { IPersona } from '../model/IPersona';
 const AnagraficaProps: React.FC<IPersona> = (persona) => {
   return (
     <div>
-      <h1 style={{textAlign:"center", color:"green"}}>ID: {persona.id}</h1>
-      <h1 style={{textAlign:"center", color:"green"}}>NOME: {persona.nome}</h1>
-      <h1 style={{textAlign:"center", color:"green"}}>COGNOME: {persona.cognome}</h1>
-      <h1 style={{textAlign:"center", color:"green"}}>ETA': {persona.età}</h1>
+      <ol>
+      <li style={{fontSize: "50px", color:"green", marginLeft: "20px"}}>
+        ID: {persona.id}</li>
+      <li style={{fontSize: "50px", color:"green", marginLeft: "20px"}}>
+        NOME: {persona.nome}</li>
+      <li style={{fontSize: "50px", color:"green", marginLeft: "20px"}}>
+        COGNOME: {persona.cognome}</li>
+      <li style={{fontSize: "50px", color:"green", marginLeft: "20px"}}>
+        ETA': {persona.età}</li>
+      <br />
+      <br />
+      </ol>
     </div>
   )
 }

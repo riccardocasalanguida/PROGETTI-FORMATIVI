@@ -30,7 +30,6 @@ const AnagraficaArray = () => {
 
   return (
     <div>
-      <AnagraficaProps />
       <AnagraficaDati persona={arr}/>
     </div>
   )

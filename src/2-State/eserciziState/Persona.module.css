@@ -1,0 +1,12 @@
+.stile {
+    background-color: cornflowerblue;
+    color: brown;
+    border-color: brown;
+    border-style: dotted;
+    border-radius: 2px;
+    font-size: 30px;
+    margin-top: 1%;
+    margin-bottom: 0%;
+    margin-left: 30%;
+    margin-right: 30%;
+}
