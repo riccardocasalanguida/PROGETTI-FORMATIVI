@@ -6,6 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import UseEffectCleanUp from './8-Reducers/02-using-the-useeffect-hook/UseEffectCleanUp';
 import TestUseEffect from './8-Reducers/02-using-the-useeffect-hook/test/TestUseEffect';
 import ContatoreCleanUp from './8-Reducers/02-using-the-useeffect-hook/test/ContatoreCleanUp';
+import ReduxAvanzato from './8-Reducers/05-usereducer-starting-project/ReduxAvanzato';
+import HttpRequest from './9-Http/01-sending-a-get-request/HttpRequest';
+import Anagrafica from './9-Http/01-sending-a-get-request/Anagrafica';
+import HttpRequestPost from './9-Http/04-sending-a-post-request/HttpRequestPost';
 
 
 const root = ReactDOM.createRoot(
@@ -13,7 +17,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <ContatoreCleanUp />
+    <HttpRequestPost />
   </React.StrictMode>
 );
 
