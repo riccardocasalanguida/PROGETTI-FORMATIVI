@@ -1,0 +1,80 @@
+section {
+  margin: 1rem auto;
+  width: 90%;
+  max-width: 40rem;
+  text-align: center;
+  background-color: #20232a;
+  border: 1px solid #61dafb;
+  border-radius: 12px;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #61dafb;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: slideIn 0.5s ease-out;
+  @keyframes slideIn {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  transition: all 0.3s ease;
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+  }
+  &:active {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  }
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  z-index: 10;
+  position: relative;
+  animation: fadeIn 1s ease-in-out;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  animation: slideIn 0.5s ease-in-out;
+  @keyframes slideIn {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  background: #61dafb;
+  border: 1px solid #61dafb;
+  color: #20232a;
+  padding: 0.75rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px #61dafb;
+  transition: all 0.3s ease;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover,
+button:active {
+  background-color: #61dafb;
+  border-color: #61dafb;
+  color: #20232a;
+  box-shadow: 0 2px 8px #61dafb;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}

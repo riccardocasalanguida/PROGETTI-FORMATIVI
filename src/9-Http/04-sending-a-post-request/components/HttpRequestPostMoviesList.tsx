@@ -20,3 +20,7 @@ const HttpRequestPostMovieList: React.FC<IHttp> = (props) => {
 };
 
 export default HttpRequestPostMovieList;
+
+
+
+
