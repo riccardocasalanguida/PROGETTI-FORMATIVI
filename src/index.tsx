@@ -14,6 +14,8 @@ import reportWebVitals from './reportWebVitals';
 //import RouterSetup from './11-Router/02-route-setup/RoutSetup';
 //import RoutAddLinks from './11-Router/04-adding-links/RoutAddLinks';
 import RoutProdLinks from './11-Router/04-adding-links/RoutProdLinks';
+import RoutDynamic from './11-Router/09-dynamic-routes/RoutDynamic';
+import Products from './13-Spring-React/Products';
 
 
 
@@ -23,7 +25,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RoutProdLinks />
+    <Products />
   </React.StrictMode>
 );
 
